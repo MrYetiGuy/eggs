@@ -3,7 +3,7 @@
     "meta": {
         "version": "PTDL_v1"
     },
-    "exported_at": "2020-06-07T00:53:09-04:00",
+    "exported_at": "2020-06-07T01:03:30-04:00",
     "name": "TyphoonLimbo",
     "author": "parker@parkervcp.com",
     "description": "Lightweight minecraft limbo server",
@@ -17,7 +17,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n# TyphoonLimbo Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\nexport GOPATH=$HOME\/go\r\nexport PATH=$GOROOT\/bin:$GOPATH\/bin:$PATH\r\n\r\napt update\r\napt install -y git curl\r\n\r\ncd \/tmp\/\r\n\r\necho \"pulling the TyphoonLimbo pterodactyl branch\"\r\n\r\ngit clone https:\/\/github.com\/TyphoonMC\/TyphoonLimbo.git\r\ncd TyphoonLimbo\r\n\r\ngo get github.com\/TyphoonMC\/TyphoonCore\r\n\r\necho -e \"building TyphoonLimbo\"\r\ngo build\r\n\r\nmv TyphoonLimbo \/mnt\/server\/\r\n\r\nif [ -f \/mnt\/server\/config.json ]; then\r\n\techo -e \"config exists nothing to do\"\r\nelse\r\n\techo -e \"copying default config over\"\r\n\tcp config.json \/mnt\/server\/\r\nfi\r\n\r\necho -e \"install complete\"",
+            "script": "#!\/bin\/bash\r\n# TyphoonLimbo Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\nexport GOPATH=$HOME\/go\r\nexport PATH=$GOROOT\/bin:$GOPATH\/bin:$PATH\r\n\r\napt update\r\napt install -y git curl\r\n\r\ncd \/tmp\/\r\n\r\necho \"pulling the TyphoonLimbo pterodactyl branch\"\r\n\r\ngit clone https:\/\/github.com\/TyphoonMC\/TyphoonLimbo.git\r\ncd TyphoonLimbo\r\n\r\ngo get github.com\/TyphoonMC\/TyphoonCore\r\n\r\necho -e \"building TyphoonLimbo\"\r\ngo build\r\n\r\nmv TyphoonLimbo \/mnt\/server\/\r\n\r\nif [ -f \/mnt\/server\/config.json ]; then\r\n\techo -e \"config exists nothing to do\"\r\nelse\r\n\techo -e \"copying default config over\"\r\n\tcp config.json \/mnt\/server\/\r\nfi\r\n\r\nif [ -f \/mnt\/server\/spawn.schematic ]; then\r\n\techo -e \"schematic exists nothing to do\"\r\nelse\r\n\techo -e \"copying default schematic over\"\r\n\tcp spawn.schematic \/mnt\/server\/\r\nfi\r\n\r\necho -e \"install complete\"",
             "container": "golang:1.14-buster",
             "entrypoint": "bash"
         }
